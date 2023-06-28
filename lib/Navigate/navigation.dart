@@ -90,7 +90,7 @@ class _BottomNavigationBarStatefulState
           ),
         ],
         currentIndex: widget.selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.teal[200],
         onTap: widget.onItemTapped,
       ),
     );

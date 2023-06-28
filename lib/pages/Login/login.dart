@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,6 +8,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:navigate/Navigate/navigation.dart';
 import 'package:navigate/Splash/splash.dart';
 import 'package:navigate/pages/Homepage/homepage.dart';
+import 'package:navigate/pages/Login/subcribe.dart';
 import 'package:navigate/pages/Register/register.dart';
 
 import 'package:get/get.dart';
@@ -35,7 +38,7 @@ class _LoginFormState extends State<LoginForm> {
       'username': username,
       'password': password,
     };
-    final Uri uri = Uri.parse('http://localhost:3000/login');
+    final Uri uri = Uri.parse('http://172.20.10.11:3000/login');
     final http.Response response = await http.post(
       uri,
       headers: {
@@ -104,7 +107,7 @@ class _LoginFormState extends State<LoginForm> {
       _token = '';
     });
 
-    final Uri uri = Uri.parse('http://localhost:3000/logout');
+    final Uri uri = Uri.parse('http://172.20.10.11:3000/logout');
     final http.Response response = await http.post(uri);
 
     // Perform any necessary error handling or post-logout logic
@@ -290,19 +293,88 @@ class _LoginFormState extends State<LoginForm> {
               ),
             )
           : Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Welcome'),
-                  SizedBox(height: 16),
-                  Text('First Name: $_firstName'), // Display the firstName
-                  Text('Last Name: $_lastName'), // Display the lastName
-                  if (_token.isNotEmpty)
-                    IconButton(
-                      icon: Icon(Icons.logout),
-                      onPressed: _logout,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 150, 0, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(270, 0, 0, 0),
+                      child: Container(
+                        width: 100,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          color: Colors.teal[200],
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'SUBSCRIBE',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
-                ],
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Stack(
+                      alignment: Alignment.topRight,
+                      children: [
+                        CircleAvatar(
+                          radius: 64,
+                          backgroundImage: NetworkImage(
+                            "https://w7.pngwing.com/pngs/184/113/png-transparent-user-profile-computer-icons-profile-heroes-black-silhouette-thumbnail.png",
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 16),
+                    Text(
+                      '$_firstName $_lastName',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      "",
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    if (_token.isNotEmpty)
+                      IconButton(
+                        icon: Icon(Icons.logout),
+                        onPressed: _logout,
+                      ),
+                    SizedBox(
+                      width: 400,
+                      child: ElevatedButton(
+                        child: Text("Subscribe"),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.teal[200],
+                          elevation: 0,
+                        ),
+                        onPressed: () {
+                          // Navigate to the subscribe page
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SubscribePage()),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
     );

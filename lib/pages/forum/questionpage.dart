@@ -22,7 +22,7 @@ class _QuestionFormState extends State<QuestionForm> {
   Future<void> sendQuestion(String question) async {
     final Random random = Random();
     final int index = random.nextInt(10000); // Generate a random index
-    final Uri uri = Uri.parse('http://localhost:3000/questions');
+    final Uri uri = Uri.parse('http://172.20.10.11:3000/questions');
     final http.Response response = await http.post(
       uri,
       headers: {'Content-Type': 'application/json'},

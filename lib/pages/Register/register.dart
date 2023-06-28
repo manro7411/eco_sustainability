@@ -30,8 +30,26 @@ class _RegisterFormState extends State<RegisterForm> {
       'username': username,
       'password': password,
     };
+    if (password.length < 8) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Invalid Password'),
+          content: Text('Password must be at least 8 characters long.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('OK'),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
 
-    final Uri uri = Uri.parse('http://localhost:3000/register');
+    final Uri uri = Uri.parse('http://172.20.10.11:3000/register');
     final http.Response response = await http.post(
       uri,
       headers: {

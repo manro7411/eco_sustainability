@@ -36,7 +36,8 @@ class _page_bodyState extends State<page_body> {
   }
 
   Future<void> fetchSustainData() async {
-    final response = await http.get(Uri.parse('http://localhost:3000/sustain'));
+    final response =
+        await http.get(Uri.parse('http://172.20.10.11:3000/sustain'));
 
     if (response.statusCode == 200) {
       final body = response.body;
