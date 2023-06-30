@@ -1,18 +1,7 @@
-# navigate
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# navigate
-# eco_sustainability
+#How to start the project
+1. Setup part
+1.1 flutter pub get in ECO_SUSTAINABILITY folder to call all dependency
+1.2 cd to backend and npm i all of these dependencies that are bcrypt, express, jsonwebtoken, MySQL, nodemon and ws
+2. Run part
+2.1 cd Backend in terminal then run nodemon index.js
+2.2 type flutter run in ECO_SUSTAINABILITY folder
